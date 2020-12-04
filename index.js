@@ -5,7 +5,7 @@ const { checkPermission, changeCommandStringLength, getEmbedFields, MessageSave 
 const moment = require("moment")
 require("moment-duration-format")
 const momenttz = require("moment-timezone")
-const token = process.argv.length == 2 ? process.env.token : "" // heroku를 사용하지 않을꺼라면 const token = "디스코드 봇 토큰" 으로 바꿔주세요.
+const token = "NzcxNjAxODcxOTEwODYyODQ5.X5ugPQ.OWO-zv5Mx7qcS3kFInv0FFt8RhQ" // heroku를 사용하지 않을꺼라면 const token = "디스코드 봇 토큰" 으로 바꿔주세요.
 const welcomeChannelName = "안녕하세요" // 입장 시 환영메시지를 전송 할 채널의 이름을 입력하세요.
 const byeChannelName = "안녕히가세요" // 퇴장 시 메시지를 전송 할 채널의 이름을 입력하세요.
 const welcomeChannelComment = "어서오세요." // 입장 시 전송할 환영메시지의 내용을 입력하세요.
