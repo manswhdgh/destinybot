@@ -23,7 +23,7 @@
     $_POST = json_decode(file_get_contents("php://input"), true);
     // $channelName22 = $_POST[channelName];
     // echo "$channelName22 야옹?";
-
+    
     if(isset($_POST[channelType]) &&
         isset($_POST[channelId]) &&
         isset($_POST[channelName]) &&
@@ -47,11 +47,12 @@
         $authorBot = $_POST[authorBot];
         $embed = $_POST[embed];
         $createTime = $_POST[createTime];
-    
+
         // 테이블에 값 쓰기.
         $sql = "INSERT INTO discord_messages (PID, ChannelType, ChannelId, ChannelName, GuildId, GuildName, Message, AuthorId, AuthorUsername, AuthorBot, Embed, CreateTime)
         VALUES (NULL, '$channelType', '$channelId', '$channelName', '$guildId', '$guildName', '$message', '$authorId', '$authorUsername', '$authorBot', '$embed', '$createTime')";
-    
+
+
         if (mysqli_query($conn,$sql)){
             echo "테이블에 값 쓰기 완료: $sql<br/>";
         } else {

@@ -42,10 +42,10 @@ function getEmbedFields(message, modify = false) {
 
 function MessageSave(message, modify = false) {
   imgs = []
-  if (message.attachments.cache.array().length > 0) {
-    message.attachments.cache.array().forEach((x) => {
+  if (message.attachments.array().length > 0) {
+    message.attachments.array().forEach(x => {
       imgs.push(x.url + "\n")
-    })
+    });
   }
 
   username = message.author.username.match(/[\u3131-\uD79D^a-zA-Z^0-9]/giu)
@@ -71,14 +71,19 @@ function MessageSave(message, modify = false) {
     Embed: Number(message.embeds.length > 0), // 0이면 false 인거다.
     CreateTime: momenttz().tz("Asia/Seoul").locale("ko").format("ll dddd LTS"),
   }
+  console.log(s)
+   s.Message = (modify ? "[수정됨] " : "") + imgs.join("") + s.Message
+  //s.Message = (modify ? "[수정됨] " : "") + s.Message
 
-  s.Message = (modify ? "[수정됨] " : "") + imgs.join("") + s.Message
-
-  MessageAdd(s.ChannelType, s.ChannelId, s.ChannelName, s.GuildId, s.GuildName, s.Message, s.AuthorId, s.AuthorUsername, s.AuthorBot, s.Embed, s.CreateTime)
+  MessageAdd(s.ChannelType, 
+    s.ChannelId, 
+    s.ChannelName, 
+    s.GuildId, s.GuildName, s.Message, s.AuthorId, s.AuthorUsername, s.AuthorBot, s.Embed, s.CreateTime)
     // .then((res) => {
     //   console.log('db 저장을 했다.', res)
     // })
     .catch((error) => console.log(error))
+    console.log()
 }
 
 module.exports.checkPermission = checkPermission

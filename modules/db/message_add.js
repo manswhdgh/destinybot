@@ -9,7 +9,6 @@ const session = axios.create({
   
   timeout: 10000,
 });
-
 function saveDB(
     channelType,
     channelId,
@@ -22,7 +21,9 @@ function saveDB(
     authorBot,
     embed,
     createTime,
-) {
+    
+) 
+{
   return session.post('http://fallenlucymn.dothome.co.kr/db/TestTable_Update.php',
                      {
                         channelType: channelType,
@@ -38,5 +39,6 @@ function saveDB(
                         createTime: createTime,
                      });
 }
+
 
 module.exports = saveDB;

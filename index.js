@@ -1,3 +1,17 @@
+/*
+[ 필수 확인 ]
+
+본 코드는 나긋해님의 12강 코드를 Discord.js v12에 맞게 변경한 코드이며,
+SERVER MEMBERS INTENT 활성화를 필요로 합니다.
+
+봇 토큰을 발급받는 페이지에서 하단으로 스크롤하면 Privileged Gateway Intents 라는 항목이 있습니다.
+해당 항목 중 SERVER MEMBERS INTENT 를 활성화 해주시면 됩니다.
+
+활성화가 됬다면 우측 버튼이 파란색으로 바뀝니다.
+
+만약 활성화하지 않고 봇을 키시면 켜지지 않습니다.
+*/
+
 const Discord = require("discord.js")
 const intent_list = new Discord.Intents(["GUILD_MEMBERS", "GUILD_MESSAGES", "GUILDS", "GUILD_INVITES"])
 const client = new Discord.Client({ ws: { intents: intent_list } })
@@ -5,7 +19,7 @@ const { checkPermission, changeCommandStringLength, getEmbedFields, MessageSave 
 const moment = require("moment")
 require("moment-duration-format")
 const momenttz = require("moment-timezone")
-const token = "NzcxNjAxODcxOTEwODYyODQ5.X5ugPQ.OWO-zv5Mx7qcS3kFInv0FFt8RhQ" // heroku를 사용하지 않을꺼라면 const token = "디스코드 봇 토큰" 으로 바꿔주세요.
+const token = process.env.token;// heroku를 사용하지 않을꺼라면 const token = "디스코드 봇 토큰" 으로 바꿔주세요.
 const welcomeChannelName = "안녕하세요" // 입장 시 환영메시지를 전송 할 채널의 이름을 입력하세요.
 const byeChannelName = "안녕히가세요" // 퇴장 시 메시지를 전송 할 채널의 이름을 입력하세요.
 const welcomeChannelComment = "어서오세요." // 입장 시 전송할 환영메시지의 내용을 입력하세요.
@@ -13,7 +27,7 @@ const byeChannelComment = "안녕히가세요." // 퇴장 시 전송할 메시�
 const roleName = "게스트" // 입장 시 지급 할 역할의 이름을 적어주세요.
 
 client.on("ready", () => {
-  console.log("Bot is Online")
+  console.log("켰다.")
   client.user.setPresence({ activity: { name: "!help를 쳐보세요." }, status: "online" })
 })
 
